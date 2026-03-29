@@ -80,10 +80,10 @@
 
   .bg-gradient-hero {
     background: linear-gradient(
-      170deg,
-      hsl(138 35% 97%) 0%,
-      hsl(140 25% 96%) 25%,
-      hsl(100 8% 97%) 60%,
+      168deg,
+      hsl(138 30% 96%) 0%,
+      hsl(140 22% 95%) 30%,
+      hsl(100 8% 97%) 65%,
       hsl(0 0% 100%) 100%
     );
   }
@@ -94,25 +94,29 @@
 
   .card-elevated {
     @apply bg-card rounded-2xl border border-border;
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.03), 0 1px 3px -1px rgba(0, 0, 0, 0.02);
-    transition: box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1), 
-                transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
-                border-color 0.35s ease;
+    box-shadow:
+      0 1px 3px 0 rgba(0, 0, 0, 0.04),
+      0 1px 2px -1px rgba(0, 0, 0, 0.03);
+    transition: box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+                border-color 0.3s ease;
   }
 
   .card-elevated:hover {
-    box-shadow: 0 8px 30px -8px rgba(0, 0, 0, 0.08), 0 2px 8px -2px rgba(0, 0, 0, 0.04);
-    transform: translateY(-2px);
-    border-color: hsl(220 16% 88%);
+    box-shadow:
+      0 12px 40px -12px rgba(0, 0, 0, 0.1),
+      0 4px 12px -4px rgba(0, 0, 0, 0.05);
+    transform: translateY(-3px);
+    border-color: hsl(220 16% 86%);
   }
 
   .card-static {
     @apply bg-card rounded-2xl border border-border;
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.03);
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.04);
   }
 
   .section-heading {
-    @apply text-2xl font-bold tracking-tight text-foreground sm:text-3xl;
+    @apply text-[1.75rem] font-extrabold tracking-tight text-foreground sm:text-[2rem];
   }
 
   .section-subheading {
