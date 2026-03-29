@@ -6,34 +6,34 @@
 
 @layer base {
   :root {
-    --background: 100 10% 97%;
-    --foreground: 220 20% 18%;
+    --background: 100 8% 97%;
+    --foreground: 220 25% 14%;
 
     --card: 0 0% 100%;
-    --card-foreground: 220 20% 18%;
+    --card-foreground: 220 25% 14%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 220 20% 18%;
+    --popover-foreground: 220 25% 14%;
 
     --primary: 138 52% 42%;
     --primary-foreground: 0 0% 100%;
     --primary-hover: 138 52% 36%;
-    --primary-light: 138 40% 95%;
+    --primary-light: 138 40% 96%;
 
-    --secondary: 140 20% 94%;
-    --secondary-foreground: 220 20% 18%;
+    --secondary: 140 14% 93%;
+    --secondary-foreground: 220 25% 14%;
 
-    --muted: 210 15% 95%;
-    --muted-foreground: 215 14% 50%;
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 10% 46%;
 
-    --accent: 138 40% 92%;
-    --accent-foreground: 138 52% 30%;
+    --accent: 138 36% 93%;
+    --accent-foreground: 138 50% 28%;
 
     --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 220 13% 91%;
-    --input: 220 13% 91%;
+    --border: 220 16% 92%;
+    --input: 220 16% 90%;
     --ring: 138 52% 42%;
 
     --radius: 0.75rem;
@@ -46,11 +46,7 @@
     --info-foreground: 0 0% 100%;
 
     --surface-elevated: 0 0% 100%;
-    --surface-sunken: 100 10% 95%;
-
-    --shadow-card: 0 1px 3px 0 rgba(0, 0, 0, 0.04), 0 1px 2px -1px rgba(0, 0, 0, 0.03);
-    --shadow-card-hover: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 4px 10px -4px rgba(0, 0, 0, 0.04);
-    --shadow-hero: 0 20px 50px -12px rgba(46, 148, 73, 0.15);
+    --surface-sunken: 220 14% 96%;
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -71,35 +67,55 @@
   body {
     @apply bg-background text-foreground antialiased;
     font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 }
 
 @layer utilities {
   .text-gradient-primary {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, hsl(138 52% 42%), hsl(138 52% 52%));
+    background-image: linear-gradient(135deg, hsl(138 55% 38%), hsl(145 48% 48%));
   }
 
   .bg-gradient-hero {
     background: linear-gradient(
-      160deg,
-      hsl(138 40% 97%) 0%,
-      hsl(138 30% 95%) 30%,
-      hsl(100 10% 97%) 70%,
+      170deg,
+      hsl(138 35% 97%) 0%,
+      hsl(140 25% 96%) 25%,
+      hsl(100 8% 97%) 60%,
       hsl(0 0% 100%) 100%
     );
   }
 
   .bg-gradient-primary {
-    background: linear-gradient(135deg, hsl(138 52% 42%), hsl(138 52% 36%));
+    background: linear-gradient(135deg, hsl(138 52% 42%), hsl(138 50% 34%));
   }
 
-  .card-hover {
-    @apply transition-all duration-300 ease-out;
-    box-shadow: var(--shadow-card);
+  .card-elevated {
+    @apply bg-card rounded-2xl border border-border;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.03), 0 1px 3px -1px rgba(0, 0, 0, 0.02);
+    transition: box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1), 
+                transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+                border-color 0.35s ease;
   }
-  .card-hover:hover {
-    box-shadow: var(--shadow-card-hover);
+
+  .card-elevated:hover {
+    box-shadow: 0 8px 30px -8px rgba(0, 0, 0, 0.08), 0 2px 8px -2px rgba(0, 0, 0, 0.04);
     transform: translateY(-2px);
+    border-color: hsl(220 16% 88%);
+  }
+
+  .card-static {
+    @apply bg-card rounded-2xl border border-border;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.03);
+  }
+
+  .section-heading {
+    @apply text-2xl font-bold tracking-tight text-foreground sm:text-3xl;
+  }
+
+  .section-subheading {
+    @apply text-[15px] leading-relaxed text-muted-foreground;
   }
 }
