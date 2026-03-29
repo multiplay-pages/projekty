@@ -1,8 +1,7 @@
 import { useState, useMemo } from "react";
-import { Search, SlidersHorizontal, Star } from "lucide-react";
+import { Search, Star, X } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { projects, categoryLabels, statusLabels } from "@/data/projects";
 import { ProjectCard } from "./ProjectCard";
 import type { ProjectCategory, ProjectStatus } from "@/data/projects";
@@ -18,11 +17,12 @@ export function ProjectLibrary() {
 
   const filtered = useMemo(() => {
     return projects.filter((p) => {
+      const q = search.toLowerCase();
       const matchesSearch =
         !search ||
-        p.title.toLowerCase().includes(search.toLowerCase()) ||
-        p.description.toLowerCase().includes(search.toLowerCase()) ||
-        p.tags.some((t) => t.toLowerCase().includes(search.toLowerCase()));
+        p.title.toLowerCase().includes(q) ||
+        p.description.toLowerCase().includes(q) ||
+        p.tags.some((t) => t.toLowerCase().includes(q));
       const matchesCategory = !selectedCategory || p.category === selectedCategory;
       const matchesStatus = !selectedStatus || p.status === selectedStatus;
       const matchesFeatured = !featuredOnly || p.featured;
@@ -30,77 +30,94 @@ export function ProjectLibrary() {
     });
   }, [search, selectedCategory, selectedStatus, featuredOnly]);
 
-  const activeFilters = [selectedCategory, selectedStatus, featuredOnly].filter(Boolean).length;
+  const hasActiveFilters = selectedCategory || selectedStatus || featuredOnly;
+
+  const clearFilters = () => {
+    setSelectedCategory(null);
+    setSelectedStatus(null);
+    setFeaturedOnly(false);
+    setSearch("");
+  };
 
   return (
-    <section id="projekty" className="bg-muted/30 py-20">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="mb-10">
-          <h2 className="mb-2 text-2xl font-bold text-foreground sm:text-3xl">
-            Wszystkie projekty
-          </h2>
-          <p className="text-muted-foreground">
+    <section id="projekty" className="py-24">
+      <div className="container mx-auto px-5 sm:px-8 lg:px-10">
+        <div className="mb-12">
+          <div className="mb-3 h-1 w-10 rounded-full bg-gradient-primary" />
+          <h2 className="section-heading mb-2">Wszystkie projekty</h2>
+          <p className="section-subheading">
             Przeglądaj pełną bibliotekę kalkulatorów, procedur, tabel i narzędzi.
           </p>
         </div>
 
         {/* Search & Filters */}
-        <div className="mb-8 space-y-4">
+        <div className="mb-10 space-y-4">
           <div className="relative">
-            <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+            <Search className="absolute left-4 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-muted-foreground/60" />
             <Input
               placeholder="Szukaj projektu po nazwie, opisie lub tagu..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="h-12 pl-10 text-base bg-card"
+              className="h-13 rounded-xl border-border bg-card pl-11 pr-4 text-[15px] shadow-sm focus-visible:ring-primary/20 focus-visible:ring-offset-0 focus-visible:border-primary/40"
             />
           </div>
 
           <div className="flex flex-wrap items-center gap-2">
-            <div className="flex items-center gap-1 text-sm text-muted-foreground mr-2">
-              <SlidersHorizontal className="h-3.5 w-3.5" />
-              Filtry{activeFilters > 0 && ` (${activeFilters})`}:
-            </div>
-
             {/* Category filters */}
             {allCategories.map((cat) => (
-              <Button
+              <button
                 key={cat}
-                variant={selectedCategory === cat ? "default" : "outline"}
-                size="sm"
-                className="h-8 text-xs"
                 onClick={() => setSelectedCategory(selectedCategory === cat ? null : cat)}
+                className={`rounded-lg px-3.5 py-2 text-[12px] font-semibold transition-all duration-200 ${
+                  selectedCategory === cat
+                    ? "bg-primary text-primary-foreground shadow-sm"
+                    : "bg-card border border-border text-foreground/70 hover:border-primary/30 hover:text-foreground"
+                }`}
               >
                 {categoryLabels[cat]}
-              </Button>
+              </button>
             ))}
 
-            <div className="h-5 w-px bg-border mx-1 hidden sm:block" />
+            <div className="h-5 w-px bg-border mx-0.5 hidden sm:block" />
 
             {/* Status filters */}
             {allStatuses.map((st) => (
-              <Badge
+              <button
                 key={st}
-                variant={selectedStatus === st ? "default" : "outline"}
-                className="cursor-pointer text-xs"
                 onClick={() => setSelectedStatus(selectedStatus === st ? null : st)}
+                className={`rounded-lg px-3 py-2 text-[12px] font-semibold transition-all duration-200 ${
+                  selectedStatus === st
+                    ? "bg-primary text-primary-foreground shadow-sm"
+                    : "bg-card border border-border text-foreground/70 hover:border-primary/30 hover:text-foreground"
+                }`}
               >
                 {statusLabels[st]}
-              </Badge>
+              </button>
             ))}
 
-            <div className="h-5 w-px bg-border mx-1 hidden sm:block" />
+            <div className="h-5 w-px bg-border mx-0.5 hidden sm:block" />
 
-            {/* Featured toggle */}
-            <Button
-              variant={featuredOnly ? "default" : "outline"}
-              size="sm"
-              className="h-8 text-xs"
+            <button
               onClick={() => setFeaturedOnly(!featuredOnly)}
+              className={`inline-flex items-center gap-1.5 rounded-lg px-3 py-2 text-[12px] font-semibold transition-all duration-200 ${
+                featuredOnly
+                  ? "bg-primary text-primary-foreground shadow-sm"
+                  : "bg-card border border-border text-foreground/70 hover:border-primary/30 hover:text-foreground"
+              }`}
             >
-              <Star className="mr-1 h-3 w-3" />
+              <Star className="h-3 w-3" />
               Wyróżnione
-            </Button>
+            </button>
+
+            {hasActiveFilters && (
+              <button
+                onClick={clearFilters}
+                className="inline-flex items-center gap-1 rounded-lg px-3 py-2 text-[12px] font-medium text-muted-foreground hover:text-foreground transition-colors"
+              >
+                <X className="h-3 w-3" />
+                Wyczyść
+              </button>
+            )}
           </div>
         </div>
 
@@ -112,15 +129,18 @@ export function ProjectLibrary() {
             ))}
           </div>
         ) : (
-          <div className="rounded-xl border border-dashed border-border bg-card px-8 py-16 text-center">
-            <p className="text-lg font-medium text-foreground">Brak wyników</p>
-            <p className="mt-1 text-sm text-muted-foreground">
+          <div className="card-static px-8 py-20 text-center border-dashed">
+            <p className="text-lg font-semibold text-foreground">Brak wyników</p>
+            <p className="mt-1.5 text-sm text-muted-foreground">
               Spróbuj zmienić kryteria wyszukiwania lub filtry.
             </p>
+            <Button variant="outline" size="sm" className="mt-5" onClick={clearFilters}>
+              Wyczyść filtry
+            </Button>
           </div>
         )}
 
-        <p className="mt-6 text-center text-sm text-muted-foreground">
+        <p className="mt-8 text-center text-[13px] text-muted-foreground">
           Wyświetlono {filtered.length} z {projects.length} projektów
         </p>
       </div>

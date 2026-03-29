@@ -5,13 +5,13 @@ import type { ProjectCategory } from "@/data/projects";
 const categoryConfig: {
   key: ProjectCategory;
   icon: React.ElementType;
-  color: string;
+  iconBg: string;
 }[] = [
-  { key: "kalkulatory", icon: Calculator, color: "bg-emerald-50 text-emerald-600" },
-  { key: "procedury", icon: FileText, color: "bg-blue-50 text-blue-600" },
-  { key: "tabele", icon: Table, color: "bg-amber-50 text-amber-600" },
-  { key: "schematy", icon: GitBranch, color: "bg-violet-50 text-violet-600" },
-  { key: "narzedzia", icon: Wrench, color: "bg-slate-100 text-slate-600" },
+  { key: "kalkulatory", icon: Calculator, iconBg: "bg-emerald-50 text-emerald-600" },
+  { key: "procedury", icon: FileText, iconBg: "bg-blue-50 text-blue-600" },
+  { key: "tabele", icon: Table, iconBg: "bg-amber-50 text-amber-700" },
+  { key: "schematy", icon: GitBranch, iconBg: "bg-violet-50 text-violet-600" },
+  { key: "narzedzia", icon: Wrench, iconBg: "bg-slate-50 text-slate-600" },
 ];
 
 const categoryDescriptions: Record<ProjectCategory, string> = {
@@ -19,40 +19,38 @@ const categoryDescriptions: Record<ProjectCategory, string> = {
   procedury: "Opisy procesów, procedur i wymagań formalnych.",
   tabele: "Tabele z etapami, statusami i parametrami procesów.",
   schematy: "Wizualne diagramy i schematy procesowe w Figma.",
-  narzedzia: "Wewnętrzne aplikacje wspierające codzienną pracę.",
+  narzedzia: "Aplikacje wspierające codzienną pracę zespołu.",
 };
 
 export function CategoryOverview() {
   return (
-    <section className="py-20">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="mb-10 text-center">
-          <h2 className="mb-2 text-2xl font-bold text-foreground sm:text-3xl">
-            Kategorie zasobów
-          </h2>
-          <p className="mx-auto max-w-lg text-muted-foreground">
+    <section className="py-24 bg-muted/30">
+      <div className="container mx-auto px-5 sm:px-8 lg:px-10">
+        <div className="mb-14 text-center">
+          <h2 className="section-heading mb-3">Kategorie zasobów</h2>
+          <p className="section-subheading mx-auto max-w-md">
             Projekty pogrupowane według typu — łatwo znajdziesz to, czego szukasz.
           </p>
         </div>
 
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
-          {categoryConfig.map(({ key, icon: Icon, color }) => {
+        <div className="mx-auto grid max-w-5xl gap-4 sm:grid-cols-2 lg:grid-cols-5 lg:gap-5">
+          {categoryConfig.map(({ key, icon: Icon, iconBg }) => {
             const count = projects.filter((p) => p.category === key).length;
             return (
               <div
                 key={key}
-                className="group flex flex-col items-center rounded-xl border border-border bg-card p-6 text-center card-hover"
+                className="group card-elevated flex flex-col items-center px-5 py-8 text-center"
               >
-                <div className={`mb-4 flex h-14 w-14 items-center justify-center rounded-xl ${color}`}>
-                  <Icon className="h-6 w-6" />
+                <div className={`mb-5 flex h-12 w-12 items-center justify-center rounded-xl ${iconBg} transition-transform duration-300 group-hover:scale-110`}>
+                  <Icon className="h-5 w-5" />
                 </div>
-                <h3 className="mb-1 text-sm font-bold text-card-foreground">
+                <h3 className="mb-1.5 text-sm font-bold text-card-foreground leading-snug">
                   {categoryLabels[key]}
                 </h3>
-                <p className="mb-3 text-xs leading-relaxed text-muted-foreground">
+                <p className="mb-4 text-[12px] leading-relaxed text-muted-foreground">
                   {categoryDescriptions[key]}
                 </p>
-                <span className="text-xs font-medium text-primary">
+                <span className="mt-auto inline-flex items-center rounded-full bg-primary/8 px-3 py-1 text-[11px] font-semibold text-primary">
                   {count} {count === 1 ? "projekt" : count < 5 ? "projekty" : "projektów"}
                 </span>
               </div>
