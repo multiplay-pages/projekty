@@ -22,9 +22,9 @@ export function ProjectLibrary() {
   } = useProjectFilters(projects);
 
   return (
-    <section id="projekty" className="py-24">
+    <section id="projekty" className="py-20 lg:py-24">
       <div className="container mx-auto px-5 sm:px-8 lg:px-10">
-        <div className="mb-12">
+        <div className="mb-10">
           <SectionHeader
             title="Wszystkie projekty"
             subtitle="Przeglądaj pełną bibliotekę kalkulatorów, procedur, tabel i narzędzi."
@@ -32,19 +32,18 @@ export function ProjectLibrary() {
           />
         </div>
 
-        {/* Search */}
-        <div className="mb-10 space-y-4">
+        {/* Search & Filters */}
+        <div className="mb-8 space-y-4">
           <div className="relative">
             <Search className="absolute left-4 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-muted-foreground/60" />
             <Input
               placeholder="Szukaj projektu po nazwie, opisie lub tagu..."
               value={filters.search}
               onChange={(e) => setSearch(e.target.value)}
-              className="h-13 rounded-xl border-border bg-card pl-11 pr-4 text-[15px] shadow-sm focus-visible:ring-primary/20 focus-visible:ring-offset-0 focus-visible:border-primary/40"
+              className="h-12 rounded-xl border-border bg-card pl-11 pr-4 text-[15px] shadow-sm focus-visible:ring-primary/20 focus-visible:ring-offset-0 focus-visible:border-primary/40"
             />
           </div>
 
-          {/* Filter chips */}
           <div className="flex flex-wrap items-center gap-2">
             {allCategories.map((cat) => (
               <FilterChip
@@ -90,7 +89,7 @@ export function ProjectLibrary() {
 
         {/* Results */}
         {filtered.length > 0 ? (
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">
             {filtered.map((project) => (
               <ProjectCard key={project.id} project={project} />
             ))}
@@ -102,7 +101,7 @@ export function ProjectLibrary() {
           />
         )}
 
-        <p className="mt-8 text-center text-[13px] text-muted-foreground">
+        <p className="mt-7 text-center text-[13px] text-muted-foreground">
           {filtered.length === totalCount
             ? `${totalCount} projektów`
             : `${filtered.length} z ${totalCount} projektów`}
@@ -111,8 +110,6 @@ export function ProjectLibrary() {
     </section>
   );
 }
-
-// ─── Empty state ────────────────────────────────────────
 
 function EmptyState({ hasFilters, onClear }: { hasFilters: boolean; onClear: () => void }) {
   return (

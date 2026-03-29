@@ -26,7 +26,7 @@ function ProjectIcon({ type, size = "sm" }: { type: Project["type"]; size?: "sm"
 
 function ProjectBadges({ project, showCategory = false }: { project: Project; showCategory?: boolean }) {
   return (
-    <div className="flex flex-wrap items-center gap-2">
+    <div className="flex flex-wrap items-center gap-1.5">
       <Badge variant={statusBadgeVariant[project.status]} className="text-[11px] font-medium">
         {statusLabels[project.status]}
       </Badge>
@@ -49,7 +49,7 @@ function ProjectTags({ tags, limit = 3 }: { tags: string[]; limit?: number }) {
       {tags.slice(0, limit).map((tag) => (
         <span
           key={tag}
-          className="rounded-md bg-muted px-2 py-0.5 text-[11px] font-medium text-muted-foreground"
+          className="rounded-md bg-muted px-2.5 py-0.5 text-[11px] font-medium text-muted-foreground"
         >
           {tag}
         </span>
@@ -78,27 +78,25 @@ export function FeaturedProjectCard({ project }: { project: Project }) {
       href={project.url}
       className="group card-elevated flex flex-col overflow-hidden sm:flex-row sm:items-stretch"
     >
-      <div className="hidden sm:block w-1 shrink-0 bg-gradient-primary rounded-l-2xl" />
+      <div className="hidden sm:block w-1.5 shrink-0 bg-gradient-primary rounded-l-2xl" />
 
-      <div className="flex flex-1 flex-col gap-5 p-7 sm:flex-row sm:items-center sm:gap-7 sm:p-8">
+      <div className="flex flex-1 flex-col gap-5 p-7 sm:flex-row sm:items-center sm:gap-6 sm:p-8">
         <ProjectIcon type={project.type} size="lg" />
 
         <div className="flex-1 min-w-0">
-          <div className="mb-2.5">
-            <ProjectBadges project={project} />
-          </div>
-
-          <h3 className="mb-1.5 text-lg font-bold text-card-foreground leading-snug group-hover:text-primary transition-colors duration-300">
+          <h3 className="mb-2 text-[17px] font-bold text-card-foreground leading-snug group-hover:text-primary transition-colors duration-300">
             {project.title}
           </h3>
 
-          <p className="text-[13px] leading-relaxed text-muted-foreground">
+          <p className="mb-3 text-[13px] leading-relaxed text-muted-foreground line-clamp-2">
             {project.description}
           </p>
 
-          <div className="mt-3.5">
-            <ProjectTags tags={project.tags} limit={4} />
+          <div className="mb-3">
+            <ProjectBadges project={project} />
           </div>
+
+          <ProjectTags tags={project.tags} limit={4} />
         </div>
 
         <div className="hidden sm:flex shrink-0 items-center">
@@ -119,9 +117,9 @@ export function ProjectCard({ project }: { project: Project }) {
       href={project.url}
       className="group card-elevated flex flex-col p-6"
     >
-      <div className="mb-4 flex items-start justify-between">
+      <div className="mb-4 flex items-start justify-between gap-3">
         <ProjectIcon type={project.type} />
-        <Badge variant={statusBadgeVariant[project.status]} className="text-[10px] font-medium">
+        <Badge variant={statusBadgeVariant[project.status]} className="text-[10px] font-medium shrink-0">
           {statusLabels[project.status]}
         </Badge>
       </div>

@@ -3,11 +3,11 @@ import { SectionHeader } from "./SectionHeader";
 
 export function HowToUseSection() {
   return (
-    <section className="py-24">
+    <section className="py-20 lg:py-24">
       <div className="container mx-auto px-5 sm:px-8 lg:px-10">
-        <div className="mb-14">
+        <div className="mb-12">
           <SectionHeader
-            title="Jak korzystać z\u00a0hubu"
+            title="Jak korzystać z&nbsp;hubu"
             subtitle="Każdy zasób ma swój typ — oto krótkie wyjaśnienie, co znajdziesz w poszczególnych kategoriach."
             centered
           />
