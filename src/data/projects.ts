@@ -1,0 +1,198 @@
+export type ProjectCategory =
+  | "kalkulatory"
+  | "procedury"
+  | "tabele"
+  | "schematy"
+  | "narzedzia";
+
+export type ProjectStatus = "aktywny" | "w-budowie" | "planowany";
+export type ProjectType = "kalkulator" | "strona" | "tabela" | "figma" | "aplikacja";
+
+export interface Project {
+  id: string;
+  title: string;
+  description: string;
+  category: ProjectCategory;
+  type: ProjectType;
+  status: ProjectStatus;
+  tags: string[];
+  url: string;
+  featured: boolean;
+}
+
+export const categoryLabels: Record<ProjectCategory, string> = {
+  kalkulatory: "Kalkulatory ofert",
+  procedury: "Procedury i procesy",
+  tabele: "Interaktywne tabele",
+  schematy: "Schematy i diagramy",
+  narzedzia: "Narzędzia wewnętrzne",
+};
+
+export const categoryIcons: Record<ProjectCategory, string> = {
+  kalkulatory: "Calculator",
+  procedury: "FileText",
+  tabele: "Table",
+  schematy: "GitBranch",
+  narzedzia: "Wrench",
+};
+
+export const statusLabels: Record<ProjectStatus, string> = {
+  aktywny: "Aktywny",
+  "w-budowie": "W budowie",
+  planowany: "Planowany",
+};
+
+export const typeLabels: Record<ProjectType, string> = {
+  kalkulator: "Kalkulator",
+  strona: "Strona",
+  tabela: "Tabela",
+  figma: "Figma",
+  aplikacja: "Aplikacja",
+};
+
+export const projects: Project[] = [
+  {
+    id: "1",
+    title: "Kalkulator GigaNET",
+    description:
+      "Interaktywny kalkulator ofert internetu światłowodowego GigaNET z konfiguracją pakietów, promocji i dodatków.",
+    category: "kalkulatory",
+    type: "kalkulator",
+    status: "aktywny",
+    tags: ["internet", "światłowód", "oferta", "B2C"],
+    url: "#",
+    featured: true,
+  },
+  {
+    id: "2",
+    title: "Kalkulator GigaBOX",
+    description:
+      "Kalkulator zestawów konwergentnych GigaBOX — internet, TV, telefon. Podgląd cen, rabatów i składu pakietu.",
+    category: "kalkulatory",
+    type: "kalkulator",
+    status: "aktywny",
+    tags: ["konwergencja", "TV", "internet", "B2C"],
+    url: "#",
+    featured: true,
+  },
+  {
+    id: "3",
+    title: "Komunikaty MNP",
+    description:
+      "Strona z wyjaśnieniem komunikatów procesu przenoszenia numeru (MNP) — statusy, kody błędów, kolejne kroki.",
+    category: "procedury",
+    type: "strona",
+    status: "aktywny",
+    tags: ["MNP", "przenoszenie numeru", "komunikaty"],
+    url: "#",
+    featured: true,
+  },
+  {
+    id: "4",
+    title: "Procedura potwierdzania wypowiedzenia",
+    description:
+      "Opis procesu przyjmowania i potwierdzania wypowiedzeń umów — role, statusy, terminy i wymagania formalne.",
+    category: "procedury",
+    type: "strona",
+    status: "aktywny",
+    tags: ["wypowiedzenie", "umowa", "retencja"],
+    url: "#",
+    featured: false,
+  },
+  {
+    id: "5",
+    title: "Interaktywna tabela procesu B2B",
+    description:
+      "Tabela z etapami procesu sprzedaży B2B — statusy, odpowiedzialności, wymagane dokumenty i terminy SLA.",
+    category: "tabele",
+    type: "tabela",
+    status: "aktywny",
+    tags: ["B2B", "sprzedaż", "SLA", "proces"],
+    url: "#",
+    featured: true,
+  },
+  {
+    id: "6",
+    title: "Schemat procesu aktywacji w Figma",
+    description:
+      "Wizualny diagram procesu aktywacji usług — od złożenia zamówienia do uruchomienia usługi u klienta.",
+    category: "schematy",
+    type: "figma",
+    status: "aktywny",
+    tags: ["aktywacja", "diagram", "Figma"],
+    url: "#",
+    featured: false,
+  },
+  {
+    id: "7",
+    title: "Dashboard operacyjny",
+    description:
+      "Panel z kluczowymi wskaźnikami operacyjnymi zespołu — statusy zgłoszeń, obciążenie, alerty i priorytety.",
+    category: "narzedzia",
+    type: "aplikacja",
+    status: "w-budowie",
+    tags: ["dashboard", "operacje", "KPI"],
+    url: "#",
+    featured: false,
+  },
+  {
+    id: "8",
+    title: "Kalkulator rabatów B2B",
+    description:
+      "Narzędzie do kalkulacji indywidualnych rabatów dla klientów biznesowych na podstawie wolumenu i okresu umowy.",
+    category: "kalkulatory",
+    type: "kalkulator",
+    status: "w-budowie",
+    tags: ["B2B", "rabaty", "kalkulator"],
+    url: "#",
+    featured: false,
+  },
+  {
+    id: "9",
+    title: "Procedura obsługi reklamacji",
+    description:
+      "Kompletna procedura przyjmowania, klasyfikacji i rozpatrywania reklamacji — ścieżki, terminy, eskalacje.",
+    category: "procedury",
+    type: "strona",
+    status: "planowany",
+    tags: ["reklamacja", "obsługa klienta", "procedura"],
+    url: "#",
+    featured: false,
+  },
+  {
+    id: "10",
+    title: "Schemat retencji klienta",
+    description:
+      "Diagram procesu retencyjnego — od sygnału churnu po ofertę win-back i raportowanie skuteczności.",
+    category: "schematy",
+    type: "figma",
+    status: "planowany",
+    tags: ["retencja", "churn", "Figma"],
+    url: "#",
+    featured: false,
+  },
+  {
+    id: "11",
+    title: "Tabela statusów zamówień",
+    description:
+      "Interaktywna tabela statusów zamówień — od przyjęcia do realizacji, z filtrami i kodami kolorowymi.",
+    category: "tabele",
+    type: "tabela",
+    status: "w-budowie",
+    tags: ["zamówienia", "statusy", "tabela"],
+    url: "#",
+    featured: false,
+  },
+  {
+    id: "12",
+    title: "Narzędzie do generowania raportów",
+    description:
+      "Wewnętrzne narzędzie do generowania raportów operacyjnych z konfigurowalnymi parametrami i eksportem CSV/PDF.",
+    category: "narzedzia",
+    type: "aplikacja",
+    status: "planowany",
+    tags: ["raporty", "eksport", "narzędzie"],
+    url: "#",
+    featured: false,
+  },
+];
