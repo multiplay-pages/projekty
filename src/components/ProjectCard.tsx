@@ -1,4 +1,4 @@
-import { ArrowRight, ExternalLink } from "lucide-react";
+import { ArrowRight, ExternalLink, Settings, BookOpen, BarChart3, Eye, Rocket } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import type { Project } from "@/data/project-config";
 import {
@@ -8,7 +8,19 @@ import {
   typeIconMap,
   typeIconStyle,
   statusBadgeVariant,
+  typeCTA,
+  typeHint,
 } from "@/data/project-config";
+
+// ─── Type-specific CTA icons ────────────────────────────
+
+const ctaIconMap: Record<Project["type"], React.ElementType> = {
+  kalkulator: Settings,
+  strona: BookOpen,
+  tabela: BarChart3,
+  figma: ExternalLink,
+  aplikacja: Rocket,
+};
 
 // ─── Shared sub-components ──────────────────────────────
 
@@ -20,24 +32,6 @@ function ProjectIcon({ type, size = "sm" }: { type: Project["type"]; size?: "sm"
   return (
     <div className={`flex shrink-0 items-center justify-center ${sizeClasses} ${style}`}>
       <Icon className={iconSize} />
-    </div>
-  );
-}
-
-function ProjectBadges({ project, showCategory = false }: { project: Project; showCategory?: boolean }) {
-  return (
-    <div className="flex flex-wrap items-center gap-1.5">
-      <Badge variant={statusBadgeVariant[project.status]} className="text-[11px] font-medium">
-        {statusLabels[project.status]}
-      </Badge>
-      <Badge variant="outline" className="text-[11px] font-medium">
-        {typeLabels[project.type]}
-      </Badge>
-      {showCategory && (
-        <span className="text-[11px] text-muted-foreground">
-          {categoryLabels[project.category]}
-        </span>
-      )}
     </div>
   );
 }
@@ -58,21 +52,11 @@ function ProjectTags({ tags, limit = 3 }: { tags: string[]; limit?: number }) {
   );
 }
 
-function ProjectActionHint({ type }: { type: Project["type"] }) {
-  return (
-    <span className="inline-flex items-center gap-1.5 text-[13px] font-semibold text-primary">
-      {type === "figma" ? (
-        <>Otwórz w Figma <ExternalLink className="h-3.5 w-3.5" /></>
-      ) : (
-        <>Otwórz <ArrowRight className="h-3.5 w-3.5" /></>
-      )}
-    </span>
-  );
-}
-
 // ─── Featured card ──────────────────────────────────────
 
 export function FeaturedProjectCard({ project }: { project: Project }) {
+  const CtaIcon = ctaIconMap[project.type];
+
   return (
     <a
       href={project.url}
@@ -85,13 +69,13 @@ export function FeaturedProjectCard({ project }: { project: Project }) {
         {/* Header: icon + badges */}
         <div className="mb-5 flex items-start justify-between gap-4">
           <ProjectIcon type={project.type} size="lg" />
-          <div className="flex items-center gap-1.5">
+          <div className="flex flex-col items-end gap-1.5">
             <Badge variant={statusBadgeVariant[project.status]} className="text-[11px] font-semibold">
               {statusLabels[project.status]}
             </Badge>
-            <Badge variant="outline" className="text-[11px] font-medium">
-              {typeLabels[project.type]}
-            </Badge>
+            <span className="text-[10px] font-medium text-muted-foreground/70">
+              {typeHint[project.type]}
+            </span>
           </div>
         </div>
 
@@ -116,13 +100,9 @@ export function FeaturedProjectCard({ project }: { project: Project }) {
             {categoryLabels[project.category]}
           </span>
           <div className="flex items-center gap-2 text-[13px] font-semibold text-primary transition-all duration-300 group-hover:gap-3">
-            {project.type === "figma" ? "Otwórz w Figma" : "Otwórz projekt"}
+            {typeCTA[project.type].verb}
             <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary/8 transition-all duration-300 group-hover:bg-primary group-hover:text-primary-foreground">
-              {project.type === "figma" ? (
-                <ExternalLink className="h-3.5 w-3.5" />
-              ) : (
-                <ArrowRight className="h-3.5 w-3.5" />
-              )}
+              <CtaIcon className="h-3.5 w-3.5" />
             </div>
           </div>
         </div>
@@ -134,6 +114,8 @@ export function FeaturedProjectCard({ project }: { project: Project }) {
 // ─── Compact card (grid) ────────────────────────────────
 
 export function ProjectCard({ project }: { project: Project }) {
+  const CtaIcon = ctaIconMap[project.type];
+
   return (
     <a
       href={project.url}
@@ -146,12 +128,13 @@ export function ProjectCard({ project }: { project: Project }) {
         </Badge>
       </div>
 
+      {/* Type hint */}
       <div className="mb-1.5 flex items-center gap-2">
         <Badge variant="outline" className="text-[10px] font-medium">
           {typeLabels[project.type]}
         </Badge>
-        <span className="text-[11px] text-muted-foreground">
-          {categoryLabels[project.category]}
+        <span className="text-[10px] text-muted-foreground/70">
+          {typeHint[project.type]}
         </span>
       </div>
 
@@ -167,8 +150,9 @@ export function ProjectCard({ project }: { project: Project }) {
         <ProjectTags tags={project.tags} />
       </div>
 
-      <div className="mt-auto opacity-0 translate-y-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">
-        <ProjectActionHint type={project.type} />
+      <div className="mt-auto flex items-center gap-1.5 opacity-0 translate-y-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0 text-[13px] font-semibold text-primary">
+        <CtaIcon className="h-3.5 w-3.5" />
+        {typeCTA[project.type].label}
       </div>
     </a>
   );

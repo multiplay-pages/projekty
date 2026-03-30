@@ -49,6 +49,24 @@ export const typeLabels: Record<ProjectType, string> = {
   aplikacja: "Aplikacja",
 };
 
+// ─── Type-specific UX metadata ──────────────────────────
+
+export const typeCTA: Record<ProjectType, { label: string; verb: string }> = {
+  kalkulator: { label: "Konfiguruj ofertę", verb: "Otwórz kalkulator" },
+  strona: { label: "Czytaj procedurę", verb: "Otwórz stronę" },
+  tabela: { label: "Przeglądaj tabelę", verb: "Otwórz tabelę" },
+  figma: { label: "Zobacz diagram", verb: "Otwórz w Figma" },
+  aplikacja: { label: "Uruchom narzędzie", verb: "Otwórz aplikację" },
+};
+
+export const typeHint: Record<ProjectType, string> = {
+  kalkulator: "Interaktywna konfiguracja",
+  strona: "Dokumentacja procesowa",
+  tabela: "Dane i statusy",
+  figma: "Schemat wizualny",
+  aplikacja: "Narzędzie operacyjne",
+};
+
 // ─── Visual config (icons, colors, badge variants) ──────
 
 export const typeIconMap: Record<ProjectType, ElementType> = {
@@ -64,7 +82,7 @@ export const typeIconStyle: Record<ProjectType, string> = {
   strona: "bg-blue-50 text-blue-600",
   tabela: "bg-amber-50 text-amber-700",
   figma: "bg-violet-50 text-violet-600",
-  aplikacja: "bg-slate-50 text-slate-600",
+  aplikacja: "bg-slate-100 text-slate-600",
 };
 
 export const statusBadgeVariant: Record<ProjectStatus, "success" | "warning" | "secondary"> = {
@@ -84,7 +102,7 @@ export const categoryConfig: {
   { key: "procedury", icon: FileText, iconStyle: "bg-blue-50 text-blue-600", description: "Opisy procesów, procedur i wymagań formalnych." },
   { key: "tabele", icon: Table, iconStyle: "bg-amber-50 text-amber-700", description: "Tabele z etapami, statusami i parametrami procesów." },
   { key: "schematy", icon: GitBranch, iconStyle: "bg-violet-50 text-violet-600", description: "Wizualne diagramy i schematy procesowe w Figma." },
-  { key: "narzedzia", icon: Wrench, iconStyle: "bg-slate-50 text-slate-600", description: "Aplikacje wspierające codzienną pracę zespołu." },
+  { key: "narzedzia", icon: Wrench, iconStyle: "bg-slate-100 text-slate-600", description: "Aplikacje wspierające codzienną pracę zespołu." },
 ];
 
 // HowToUse resource type descriptions
@@ -98,7 +116,7 @@ export const resourceTypes: {
   { icon: BookOpen, title: "Strona wiedzy", description: "Przejrzysty opis procedury, procesu lub zestawu reguł biznesowych.", iconStyle: "bg-sky-50 text-sky-600" },
   { icon: Table, title: "Tabela interaktywna", description: "Tabela z etapami, filtrami i statusami — do śledzenia procesów krok po kroku.", iconStyle: "bg-amber-50 text-amber-600" },
   { icon: GitBranch, title: "Diagram Figma", description: "Wizualny schemat procesu lub przepływu — link do projektu w Figma.", iconStyle: "bg-violet-50 text-violet-600" },
-  { icon: Wrench, title: "Aplikacja wewnętrzna", description: "Narzędzie MVP do codziennej pracy — dashboard, generator raportów itp.", iconStyle: "bg-slate-50 text-slate-600" },
+  { icon: Wrench, title: "Aplikacja wewnętrzna", description: "Narzędzie MVP do codziennej pracy — dashboard, generator raportów itp.", iconStyle: "bg-slate-100 text-slate-600" },
   { icon: FileText, title: "Procedura", description: "Formalny opis postępowania — kroki, role, terminy i wymagane dokumenty.", iconStyle: "bg-blue-50 text-blue-600" },
 ];
 
