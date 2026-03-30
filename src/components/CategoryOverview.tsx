@@ -14,7 +14,7 @@ export function CategoryOverview() {
           />
         </div>
 
-        <div className="mx-auto grid max-w-5xl gap-4 sm:grid-cols-2 lg:grid-cols-5 lg:gap-4">
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5 lg:gap-5">
           {categoryConfig.map(({ key, icon: Icon, iconStyle, description }) => {
             const count = projects.filter((p) => p.category === key).length;
             return (

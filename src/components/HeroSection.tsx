@@ -33,7 +33,7 @@ export function HeroSection() {
       </div>
 
       <div className="container relative z-10 mx-auto px-5 pb-20 pt-24 sm:px-8 lg:px-10 lg:pb-28 lg:pt-36">
-        <div className="mx-auto max-w-3xl text-center">
+        <div className="mx-auto max-w-[44rem] text-center">
           {/* Pill badge */}
           <div className="mb-7 inline-flex items-center gap-2.5 rounded-full border border-border/80 bg-card/80 px-5 py-2.5 text-[13px] font-semibold text-muted-foreground backdrop-blur-sm">
             <Sparkles className="h-3.5 w-3.5 text-primary" />

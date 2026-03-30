@@ -13,7 +13,7 @@ export function HowToUseSection() {
           />
         </div>
 
-        <div className="mx-auto grid max-w-4xl gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {resourceTypes.map((item) => (
             <div
               key={item.title}
