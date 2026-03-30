@@ -1,4 +1,4 @@
-import { Search, Star, X } from "lucide-react";
+import { Search, Star, X, SlidersHorizontal } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { FilterChip } from "./FilterChip";
@@ -21,6 +21,17 @@ export function ProjectLibrary() {
     totalCount,
   } = useProjectFilters(projects);
 
+  const activeFilterCount =
+    (filters.category ? 1 : 0) +
+    (filters.status ? 1 : 0) +
+    (filters.featuredOnly ? 1 : 0);
+
+  // Count projects per category for chips
+  const categoryCounts = allCategories.reduce((acc, cat) => {
+    acc[cat] = projects.filter((p) => p.category === cat).length;
+    return acc;
+  }, {} as Record<string, number>);
+
   return (
     <section id="projekty" className="py-20 lg:py-24">
       <div className="container mx-auto px-5 sm:px-8 lg:px-10">
@@ -33,58 +44,95 @@ export function ProjectLibrary() {
         </div>
 
         {/* Search & Filters */}
-        <div className="mb-8 space-y-4">
-          <div className="relative">
-            <Search className="absolute left-4 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-muted-foreground/60" />
+        <div className="mb-8 rounded-2xl border border-border bg-card p-5 sm:p-6">
+          {/* Search */}
+          <div className="relative mb-5">
+            <Search className="absolute left-4 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-muted-foreground/50" />
             <Input
               placeholder="Szukaj projektu po nazwie, opisie lub tagu..."
               value={filters.search}
               onChange={(e) => setSearch(e.target.value)}
-              className="h-12 rounded-xl border-border bg-card pl-11 pr-4 text-[15px] shadow-sm focus-visible:ring-primary/20 focus-visible:ring-offset-0 focus-visible:border-primary/40"
+              className="h-12 rounded-xl border-border bg-background pl-11 pr-4 text-[15px] shadow-sm focus-visible:ring-primary/20 focus-visible:ring-offset-0 focus-visible:border-primary/40"
             />
           </div>
 
-          <div className="flex flex-wrap items-center gap-2">
-            {allCategories.map((cat) => (
+          {/* Filter rows */}
+          <div className="space-y-3">
+            {/* Categories */}
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="mr-1 flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground/60">
+                <SlidersHorizontal className="h-3 w-3" />
+                Kategoria
+              </span>
+              {allCategories.map((cat) => (
+                <FilterChip
+                  key={cat}
+                  label={categoryLabels[cat]}
+                  active={filters.category === cat}
+                  onClick={() => toggleCategory(cat)}
+                  count={categoryCounts[cat]}
+                />
+              ))}
+            </div>
+
+            {/* Status + Featured */}
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="mr-1 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground/60">
+                Status
+              </span>
+              {allStatuses.map((st) => (
+                <FilterChip
+                  key={st}
+                  label={statusLabels[st]}
+                  active={filters.status === st}
+                  onClick={() => toggleStatus(st)}
+                />
+              ))}
+
+              <div className="h-5 w-px bg-border mx-1 hidden sm:block" />
+
               <FilterChip
-                key={cat}
-                label={categoryLabels[cat]}
-                active={filters.category === cat}
-                onClick={() => toggleCategory(cat)}
+                label="Wyróżnione"
+                active={filters.featuredOnly}
+                onClick={toggleFeatured}
+                icon={<Star className="h-3 w-3" />}
               />
-            ))}
 
-            <div className="h-5 w-px bg-border mx-0.5 hidden sm:block" />
+              {hasActiveFilters && (
+                <button
+                  type="button"
+                  onClick={clearAll}
+                  className="ml-1 inline-flex items-center gap-1 rounded-full px-3 py-1.5 text-[12px] font-medium text-muted-foreground hover:text-destructive hover:bg-destructive/5 transition-colors"
+                >
+                  <X className="h-3 w-3" />
+                  Wyczyść ({activeFilterCount})
+                </button>
+              )}
+            </div>
+          </div>
+        </div>
 
-            {allStatuses.map((st) => (
-              <FilterChip
-                key={st}
-                label={statusLabels[st]}
-                active={filters.status === st}
-                onClick={() => toggleStatus(st)}
-              />
-            ))}
-
-            <div className="h-5 w-px bg-border mx-0.5 hidden sm:block" />
-
-            <FilterChip
-              label="Wyróżnione"
-              active={filters.featuredOnly}
-              onClick={toggleFeatured}
-              icon={<Star className="h-3 w-3" />}
-            />
-
-            {hasActiveFilters && (
-              <button
-                type="button"
-                onClick={clearAll}
-                className="inline-flex items-center gap-1 rounded-lg px-3 py-2 text-[12px] font-medium text-muted-foreground hover:text-foreground transition-colors"
-              >
-                <X className="h-3 w-3" />
-                Wyczyść filtry
-              </button>
+        {/* Results summary */}
+        <div className="mb-5 flex items-center justify-between">
+          <p className="text-[13px] text-muted-foreground">
+            {filtered.length === totalCount ? (
+              <>Wyświetlanie <span className="font-semibold text-foreground">{totalCount}</span> projektów</>
+            ) : (
+              <>
+                <span className="font-semibold text-foreground">{filtered.length}</span> z{" "}
+                <span className="font-semibold text-foreground">{totalCount}</span> projektów
+              </>
             )}
-          </div>
+          </p>
+          {(hasActiveFilters || filters.search) && (
+            <button
+              type="button"
+              onClick={clearAll}
+              className="text-[12px] font-medium text-primary hover:text-primary/80 transition-colors"
+            >
+              Pokaż wszystko
+            </button>
+          )}
         </div>
 
         {/* Results */}
@@ -97,36 +145,44 @@ export function ProjectLibrary() {
         ) : (
           <EmptyState
             hasFilters={hasActiveFilters || !!filters.search}
+            searchQuery={filters.search}
             onClear={clearAll}
           />
         )}
-
-        <p className="mt-7 text-center text-[13px] text-muted-foreground">
-          {filtered.length === totalCount
-            ? `${totalCount} projektów`
-            : `${filtered.length} z ${totalCount} projektów`}
-        </p>
       </div>
     </section>
   );
 }
 
-function EmptyState({ hasFilters, onClear }: { hasFilters: boolean; onClear: () => void }) {
+function EmptyState({
+  hasFilters,
+  searchQuery,
+  onClear,
+}: {
+  hasFilters: boolean;
+  searchQuery: string;
+  onClear: () => void;
+}) {
   return (
-    <div className="card-static border-dashed px-8 py-20 text-center">
-      <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-muted">
-        <Search className="h-6 w-6 text-muted-foreground" />
+    <div className="rounded-2xl border border-dashed border-border bg-card px-8 py-20 text-center">
+      <div className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-muted">
+        <Search className="h-7 w-7 text-muted-foreground/60" />
       </div>
-      <p className="text-lg font-semibold text-foreground">
-        {hasFilters ? "Brak wyników dla wybranych filtrów" : "Brak projektów"}
+      <p className="text-lg font-bold text-foreground">
+        {searchQuery
+          ? `Brak wyników dla „${searchQuery}"`
+          : hasFilters
+            ? "Brak projektów dla wybranych filtrów"
+            : "Brak projektów"}
       </p>
-      <p className="mt-1.5 text-sm text-muted-foreground">
+      <p className="mx-auto mt-2 max-w-sm text-[14px] leading-relaxed text-muted-foreground">
         {hasFilters
-          ? "Spróbuj zmienić kryteria wyszukiwania lub wyczyść filtry."
+          ? "Spróbuj zmienić kryteria wyszukiwania, wybrać inną kategorię lub wyczyść wszystkie filtry."
           : "Dodaj pierwszy projekt, aby rozpocząć."}
       </p>
       {hasFilters && (
-        <Button variant="outline" size="sm" className="mt-5" onClick={onClear}>
+        <Button variant="outline" size="sm" className="mt-6 rounded-full" onClick={onClear}>
+          <X className="mr-1.5 h-3.5 w-3.5" />
           Wyczyść wszystkie filtry
         </Button>
       )}
