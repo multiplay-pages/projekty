@@ -76,32 +76,54 @@ export function FeaturedProjectCard({ project }: { project: Project }) {
   return (
     <a
       href={project.url}
-      className="group card-elevated flex flex-col overflow-hidden sm:flex-row sm:items-stretch"
+      className="group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition-all duration-300 hover:border-primary/20 hover:shadow-[0_16px_48px_-12px_rgba(0,0,0,0.1),0_4px_16px_-4px_rgba(0,0,0,0.06)]"
     >
-      <div className="hidden sm:block w-1.5 shrink-0 bg-gradient-primary rounded-l-2xl" />
+      {/* Top accent bar */}
+      <div className="h-1 w-full bg-gradient-primary" />
 
-      <div className="flex flex-1 flex-col gap-5 p-7 sm:flex-row sm:items-center sm:gap-6 sm:p-8">
-        <ProjectIcon type={project.type} size="lg" />
-
-        <div className="flex-1 min-w-0">
-          <h3 className="mb-2 text-[17px] font-bold text-card-foreground leading-snug group-hover:text-primary transition-colors duration-300">
-            {project.title}
-          </h3>
-
-          <p className="mb-3 text-[13px] leading-relaxed text-muted-foreground line-clamp-2">
-            {project.description}
-          </p>
-
-          <div className="mb-3">
-            <ProjectBadges project={project} />
+      <div className="flex flex-1 flex-col p-7 sm:p-8">
+        {/* Header: icon + badges */}
+        <div className="mb-5 flex items-start justify-between gap-4">
+          <ProjectIcon type={project.type} size="lg" />
+          <div className="flex items-center gap-1.5">
+            <Badge variant={statusBadgeVariant[project.status]} className="text-[11px] font-semibold">
+              {statusLabels[project.status]}
+            </Badge>
+            <Badge variant="outline" className="text-[11px] font-medium">
+              {typeLabels[project.type]}
+            </Badge>
           </div>
+        </div>
 
+        {/* Title */}
+        <h3 className="mb-2.5 text-[19px] font-extrabold leading-snug text-card-foreground transition-colors duration-300 group-hover:text-primary">
+          {project.title}
+        </h3>
+
+        {/* Description */}
+        <p className="mb-5 text-[14px] leading-[1.65] text-muted-foreground line-clamp-2">
+          {project.description}
+        </p>
+
+        {/* Tags */}
+        <div className="mb-6">
           <ProjectTags tags={project.tags} limit={4} />
         </div>
 
-        <div className="hidden sm:flex shrink-0 items-center">
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-muted text-muted-foreground transition-all duration-300 group-hover:bg-primary group-hover:text-primary-foreground">
-            <ArrowRight className="h-4 w-4" />
+        {/* CTA footer */}
+        <div className="mt-auto flex items-center justify-between border-t border-border/60 pt-5">
+          <span className="text-[12px] font-medium text-muted-foreground">
+            {categoryLabels[project.category]}
+          </span>
+          <div className="flex items-center gap-2 text-[13px] font-semibold text-primary transition-all duration-300 group-hover:gap-3">
+            {project.type === "figma" ? "Otwórz w Figma" : "Otwórz projekt"}
+            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary/8 transition-all duration-300 group-hover:bg-primary group-hover:text-primary-foreground">
+              {project.type === "figma" ? (
+                <ExternalLink className="h-3.5 w-3.5" />
+              ) : (
+                <ArrowRight className="h-3.5 w-3.5" />
+              )}
+            </div>
           </div>
         </div>
       </div>
