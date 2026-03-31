@@ -37,8 +37,8 @@ export function ProjectLibrary() {
       <div className="container mx-auto px-5 sm:px-8 lg:px-10">
         <div className="mb-10">
           <SectionHeader
-            title="Wszystkie projekty"
-            subtitle="Przeglądaj pełną bibliotekę kalkulatorów, procedur, tabel i narzędzi."
+            title="Biblioteka zasobów"
+            subtitle="Pełna lista kalkulatorów, procedur, tabel i narzędzi — filtruj lub szukaj po nazwie."
             accent
           />
         </div>
