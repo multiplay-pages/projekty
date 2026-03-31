@@ -42,15 +42,15 @@ export function HeroSection() {
 
           {/* Headline */}
           <h1 className="mb-5 text-[2.75rem] font-extrabold leading-[1.08] tracking-tight text-foreground sm:text-[3.25rem] lg:text-[3.75rem]">
-            Twoje projekty
+            Kalkulatory, procedury
             <br />
-            <span className="text-gradient-primary">w jednym miejscu</span>
+            <span className="text-gradient-primary">i&nbsp;narzędzia zespołu</span>
           </h1>
 
           {/* Subheadline */}
           <p className="mx-auto mb-10 max-w-lg text-[16px] leading-[1.7] text-muted-foreground sm:text-[17px]">
-            Kalkulatory ofert, procedury, tabele procesowe, schematy
-            i&nbsp;narzędzia wewnętrzne — uporządkowane i&nbsp;gotowe do&nbsp;użycia.
+            Wszystko, czego potrzebujesz do codziennej pracy — oferty, procesy,
+            tabele i&nbsp;schematy w&nbsp;jednym miejscu.
           </p>
 
           {/* CTAs */}
