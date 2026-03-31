@@ -1,5 +1,6 @@
-import { ArrowDown, Sparkles } from "lucide-react";
+import { ArrowDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import multiplayLogo from "@/assets/multiplay-logo.png";
 
 export function HeroSection() {
   const scrollToProjects = () => {
@@ -22,7 +23,6 @@ export function HeroSection() {
           className="absolute -left-24 bottom-0 h-96 w-96 rounded-full opacity-25"
           style={{ background: "radial-gradient(circle, hsl(138 35% 92%) 0%, transparent 65%)" }}
         />
-        {/* Subtle grid pattern overlay */}
         <div
           className="absolute inset-0 opacity-[0.025]"
           style={{
@@ -34,23 +34,26 @@ export function HeroSection() {
 
       <div className="container relative z-10 mx-auto px-5 pb-20 pt-24 sm:px-8 lg:px-10 lg:pb-28 lg:pt-36">
         <div className="mx-auto max-w-[44rem] text-center">
-          {/* Pill badge */}
-          <div className="mb-7 inline-flex items-center gap-2.5 rounded-full border border-border/80 bg-card/80 px-5 py-2.5 text-[13px] font-semibold text-muted-foreground backdrop-blur-sm">
-            <Sparkles className="h-3.5 w-3.5 text-primary" />
-            Zasoby operacyjne w jednym miejscu
+          {/* Multiplay logo */}
+          <div className="mb-8 flex justify-center">
+            <img
+              src={multiplayLogo}
+              alt="Multiplay"
+              className="h-10 sm:h-12 w-auto"
+            />
           </div>
 
           {/* Headline */}
           <h1 className="mb-5 text-[2.75rem] font-extrabold leading-[1.08] tracking-tight text-foreground sm:text-[3.25rem] lg:text-[3.75rem]">
-            Kalkulatory, procedury
+            Narzędzia
             <br />
-            <span className="text-gradient-primary">i&nbsp;narzędzia zespołu</span>
+            <span className="text-gradient-primary">i&nbsp;zasoby operacyjne</span>
           </h1>
 
           {/* Subheadline */}
           <p className="mx-auto mb-10 max-w-lg text-[16px] leading-[1.7] text-muted-foreground sm:text-[17px]">
-            Wszystko, czego potrzebujesz do codziennej pracy — oferty, procesy,
-            tabele i&nbsp;schematy w&nbsp;jednym miejscu.
+            Kalkulatory ofert, procedury i&nbsp;strony pomocnicze
+            zespołu Multiplay — w&nbsp;jednym miejscu.
           </p>
 
           {/* CTAs */}
@@ -61,7 +64,7 @@ export function HeroSection() {
               onClick={scrollToProjects}
               className="h-[52px] rounded-xl px-9 text-[15px] font-semibold"
             >
-              Znajdź zasób
+              Przejdź do zasobów
               <ArrowDown className="ml-2 h-4 w-4" />
             </Button>
             <Button

@@ -10,8 +10,8 @@ export function FeaturedProjects() {
       <div className="container mx-auto px-5 sm:px-8 lg:px-10">
         <div className="mb-10">
           <SectionHeader
-            title="Najczęściej używane"
-            subtitle="Narzędzia i zasoby, z których zespół korzysta na co dzień."
+            title="Główne narzędzia"
+            subtitle="Aktywne kalkulatory, procedury i zasoby używane na co dzień."
             accent
           />
         </div>

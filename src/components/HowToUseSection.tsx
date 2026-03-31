@@ -8,12 +8,12 @@ export function HowToUseSection() {
         <div className="mb-12">
           <SectionHeader
             title="Typy zasobów"
-            subtitle="Każdy element ma swój format — zobacz, czego możesz się spodziewać po kliknięciu."
+            subtitle="Każdy zasób ma swój format — zobacz, czego możesz się spodziewać."
             centered
           />
         </div>
 
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mx-auto grid max-w-4xl gap-4 sm:grid-cols-3">
           {resourceTypes.map((item) => (
             <div
               key={item.title}

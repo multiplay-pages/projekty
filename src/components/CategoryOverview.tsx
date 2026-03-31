@@ -8,13 +8,13 @@ export function CategoryOverview() {
       <div className="container mx-auto px-5 sm:px-8 lg:px-10">
         <div className="mb-12">
           <SectionHeader
-            title="Czego tu szukać"
-            subtitle="Zasoby podzielone na kategorie — wybierz typ, który Cię interesuje."
+            title="Kategorie zasobów"
+            subtitle="Zasoby pogrupowane według typu — wybierz kategorię, która Cię interesuje."
             centered
           />
         </div>
 
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5 lg:gap-5">
+        <div className="mx-auto grid max-w-3xl gap-4 sm:grid-cols-3 lg:gap-5">
           {categoryConfig.map(({ key, icon: Icon, iconStyle, description }) => {
             const count = projects.filter((p) => p.category === key).length;
             return (
@@ -32,7 +32,7 @@ export function CategoryOverview() {
                   {description}
                 </p>
                 <span className="mt-auto inline-flex items-center rounded-full bg-primary/8 px-3 py-1 text-[11px] font-semibold text-primary">
-                  {count} {count === 1 ? "projekt" : count < 5 ? "projekty" : "projektów"}
+                  {count} {count === 1 ? "zasób" : count < 5 ? "zasoby" : "zasobów"}
                 </span>
               </div>
             );

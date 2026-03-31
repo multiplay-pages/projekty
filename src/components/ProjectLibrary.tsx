@@ -26,7 +26,6 @@ export function ProjectLibrary() {
     (filters.status ? 1 : 0) +
     (filters.featuredOnly ? 1 : 0);
 
-  // Count projects per category for chips
   const categoryCounts = allCategories.reduce((acc, cat) => {
     acc[cat] = projects.filter((p) => p.category === cat).length;
     return acc;
@@ -37,15 +36,14 @@ export function ProjectLibrary() {
       <div className="container mx-auto px-5 sm:px-8 lg:px-10">
         <div className="mb-10">
           <SectionHeader
-            title="Biblioteka zasobów"
-            subtitle="Pełna lista kalkulatorów, procedur, tabel i narzędzi — filtruj lub szukaj po nazwie."
+            title="Wszystkie zasoby"
+            subtitle="Pełna lista narzędzi, kalkulatorów i procedur — filtruj lub szukaj po nazwie."
             accent
           />
         </div>
 
         {/* Search & Filters */}
         <div className="mb-8 rounded-2xl border border-border bg-card p-5 sm:p-6">
-          {/* Search */}
           <div className="relative mb-5">
             <Search className="absolute left-4 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-muted-foreground/50" />
             <Input
@@ -56,9 +54,7 @@ export function ProjectLibrary() {
             />
           </div>
 
-          {/* Filter rows */}
           <div className="space-y-3">
-            {/* Categories */}
             <div className="flex flex-wrap items-center gap-2">
               <span className="mr-1 flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground/60">
                 <SlidersHorizontal className="h-3 w-3" />
@@ -75,7 +71,6 @@ export function ProjectLibrary() {
               ))}
             </div>
 
-            {/* Status + Featured */}
             <div className="flex flex-wrap items-center gap-2">
               <span className="mr-1 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground/60">
                 Status
@@ -116,11 +111,11 @@ export function ProjectLibrary() {
         <div className="mb-5 flex items-center justify-between">
           <p className="text-[13px] text-muted-foreground">
             {filtered.length === totalCount ? (
-              <>Wyświetlanie <span className="font-semibold text-foreground">{totalCount}</span> projektów</>
+              <>Wyświetlanie <span className="font-semibold text-foreground">{totalCount}</span> zasobów</>
             ) : (
               <>
                 <span className="font-semibold text-foreground">{filtered.length}</span> z{" "}
-                <span className="font-semibold text-foreground">{totalCount}</span> projektów
+                <span className="font-semibold text-foreground">{totalCount}</span> zasobów
               </>
             )}
           </p>
@@ -172,18 +167,18 @@ function EmptyState({
         {searchQuery
           ? `Brak wyników dla „${searchQuery}"`
           : hasFilters
-            ? "Brak projektów dla wybranych filtrów"
-            : "Brak projektów"}
+            ? "Brak zasobów dla wybranych filtrów"
+            : "Brak zasobów"}
       </p>
       <p className="mx-auto mt-2 max-w-sm text-[14px] leading-relaxed text-muted-foreground">
         {hasFilters
-          ? "Spróbuj zmienić kryteria wyszukiwania, wybrać inną kategorię lub wyczyść wszystkie filtry."
-          : "Dodaj pierwszy projekt, aby rozpocząć."}
+          ? "Spróbuj zmienić kryteria wyszukiwania lub wyczyść filtry."
+          : "Brak zasobów do wyświetlenia."}
       </p>
       {hasFilters && (
         <Button variant="outline" size="sm" className="mt-6 rounded-full" onClick={onClear}>
           <X className="mr-1.5 h-3.5 w-3.5" />
-          Wyczyść wszystkie filtry
+          Wyczyść filtry
         </Button>
       )}
     </div>
