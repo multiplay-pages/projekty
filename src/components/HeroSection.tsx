@@ -70,7 +70,7 @@ export function HeroSection() {
               onClick={scrollToFeatured}
               className="h-[52px] rounded-xl px-9 text-[15px] font-semibold"
             >
-              Wyróżnione narzędzia
+              Najważniejsze narzędzia
             </Button>
           </div>
         </div>

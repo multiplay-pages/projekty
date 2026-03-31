@@ -8,8 +8,8 @@ export function CategoryOverview() {
       <div className="container mx-auto px-5 sm:px-8 lg:px-10">
         <div className="mb-12">
           <SectionHeader
-            title="Kategorie zasobów"
-            subtitle="Projekty pogrupowane według typu — łatwo znajdziesz to, czego szukasz."
+            title="Czego tu szukać"
+            subtitle="Zasoby podzielone na kategorie — wybierz typ, który Cię interesuje."
             centered
           />
         </div>

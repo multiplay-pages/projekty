@@ -7,8 +7,8 @@ export function HowToUseSection() {
       <div className="container mx-auto px-5 sm:px-8 lg:px-10">
         <div className="mb-12">
           <SectionHeader
-            title="Jak korzystać z&nbsp;hubu"
-            subtitle="Każdy zasób ma swój typ — oto krótkie wyjaśnienie, co znajdziesz w poszczególnych kategoriach."
+            title="Typy zasobów"
+            subtitle="Każdy element ma swój format — zobacz, czego możesz się spodziewać po kliknięciu."
             centered
           />
         </div>

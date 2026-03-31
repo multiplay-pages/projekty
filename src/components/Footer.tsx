@@ -10,7 +10,7 @@ export function Footer() {
             <span className="text-[15px] font-bold text-foreground tracking-tight">Project Hub</span>
           </div>
           <p className="text-[13px] text-muted-foreground">
-            © {new Date().getFullYear()} Project Hub — Centrum zasobów i narzędzi wewnętrznych.
+            © {new Date().getFullYear()} Project Hub — Zasoby operacyjne zespołu.
           </p>
         </div>
       </div>

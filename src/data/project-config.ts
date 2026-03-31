@@ -28,43 +28,43 @@ export interface Project {
 // ─── Labels (UI strings) ────────────────────────────────
 
 export const categoryLabels: Record<ProjectCategory, string> = {
-  kalkulatory: "Kalkulatory ofert",
-  procedury: "Procedury i procesy",
-  tabele: "Interaktywne tabele",
-  schematy: "Schematy i diagramy",
-  narzedzia: "Narzędzia wewnętrzne",
+  kalkulatory: "Kalkulatory",
+  procedury: "Procedury",
+  tabele: "Tabele procesowe",
+  schematy: "Schematy",
+  narzedzia: "Narzędzia",
 };
 
 export const statusLabels: Record<ProjectStatus, string> = {
-  aktywny: "Aktywny",
-  "w-budowie": "W budowie",
+  aktywny: "Gotowy",
+  "w-budowie": "W przygotowaniu",
   planowany: "Planowany",
 };
 
 export const typeLabels: Record<ProjectType, string> = {
   kalkulator: "Kalkulator",
-  strona: "Strona",
+  strona: "Procedura",
   tabela: "Tabela",
-  figma: "Figma",
-  aplikacja: "Aplikacja",
+  figma: "Diagram",
+  aplikacja: "Narzędzie",
 };
 
 // ─── Type-specific UX metadata ──────────────────────────
 
 export const typeCTA: Record<ProjectType, { label: string; verb: string }> = {
   kalkulator: { label: "Konfiguruj ofertę", verb: "Otwórz kalkulator" },
-  strona: { label: "Czytaj procedurę", verb: "Otwórz stronę" },
-  tabela: { label: "Przeglądaj tabelę", verb: "Otwórz tabelę" },
-  figma: { label: "Zobacz diagram", verb: "Otwórz w Figma" },
-  aplikacja: { label: "Uruchom narzędzie", verb: "Otwórz aplikację" },
+  strona: { label: "Przeczytaj", verb: "Otwórz procedurę" },
+  tabela: { label: "Zobacz tabelę", verb: "Otwórz tabelę" },
+  figma: { label: "Zobacz schemat", verb: "Otwórz w Figma" },
+  aplikacja: { label: "Uruchom", verb: "Otwórz narzędzie" },
 };
 
 export const typeHint: Record<ProjectType, string> = {
   kalkulator: "Interaktywna konfiguracja",
-  strona: "Dokumentacja procesowa",
+  strona: "Opis procedury",
   tabela: "Dane i statusy",
-  figma: "Schemat wizualny",
-  aplikacja: "Narzędzie operacyjne",
+  figma: "Diagram w Figma",
+  aplikacja: "Narzędzie wewnętrzne",
 };
 
 // ─── Visual config (icons, colors, badge variants) ──────
@@ -98,11 +98,11 @@ export const categoryConfig: {
   iconStyle: string;
   description: string;
 }[] = [
-  { key: "kalkulatory", icon: Calculator, iconStyle: "bg-emerald-50 text-emerald-600", description: "Interaktywne narzędzia do wyceny ofert, pakietów i usług." },
-  { key: "procedury", icon: FileText, iconStyle: "bg-blue-50 text-blue-600", description: "Opisy procesów, procedur i wymagań formalnych." },
-  { key: "tabele", icon: Table, iconStyle: "bg-amber-50 text-amber-700", description: "Tabele z etapami, statusami i parametrami procesów." },
-  { key: "schematy", icon: GitBranch, iconStyle: "bg-violet-50 text-violet-600", description: "Wizualne diagramy i schematy procesowe w Figma." },
-  { key: "narzedzia", icon: Wrench, iconStyle: "bg-slate-100 text-slate-600", description: "Aplikacje wspierające codzienną pracę zespołu." },
+  { key: "kalkulatory", icon: Calculator, iconStyle: "bg-emerald-50 text-emerald-600", description: "Narzędzia do składania ofert — wybierz parametry i zobacz cenę." },
+  { key: "procedury", icon: FileText, iconStyle: "bg-blue-50 text-blue-600", description: "Opisy procesów krok po kroku — role, terminy, wymagania." },
+  { key: "tabele", icon: Table, iconStyle: "bg-amber-50 text-amber-700", description: "Tabele z etapami, statusami i odpowiedzialnościami." },
+  { key: "schematy", icon: GitBranch, iconStyle: "bg-violet-50 text-violet-600", description: "Wizualne diagramy procesów i przepływów w Figma." },
+  { key: "narzedzia", icon: Wrench, iconStyle: "bg-slate-100 text-slate-600", description: "Aplikacje do codziennej pracy — dashboardy, generatory, eksporty." },
 ];
 
 // HowToUse resource type descriptions
@@ -112,12 +112,12 @@ export const resourceTypes: {
   description: string;
   iconStyle: string;
 }[] = [
-  { icon: Calculator, title: "Kalkulator", description: "Interaktywne narzędzie do konfiguracji oferty i podglądu cen w czasie rzeczywistym.", iconStyle: "bg-emerald-50 text-emerald-600" },
-  { icon: BookOpen, title: "Strona wiedzy", description: "Przejrzysty opis procedury, procesu lub zestawu reguł biznesowych.", iconStyle: "bg-sky-50 text-sky-600" },
-  { icon: Table, title: "Tabela interaktywna", description: "Tabela z etapami, filtrami i statusami — do śledzenia procesów krok po kroku.", iconStyle: "bg-amber-50 text-amber-600" },
-  { icon: GitBranch, title: "Diagram Figma", description: "Wizualny schemat procesu lub przepływu — link do projektu w Figma.", iconStyle: "bg-violet-50 text-violet-600" },
-  { icon: Wrench, title: "Aplikacja wewnętrzna", description: "Narzędzie MVP do codziennej pracy — dashboard, generator raportów itp.", iconStyle: "bg-slate-100 text-slate-600" },
-  { icon: FileText, title: "Procedura", description: "Formalny opis postępowania — kroki, role, terminy i wymagane dokumenty.", iconStyle: "bg-blue-50 text-blue-600" },
+  { icon: Calculator, title: "Kalkulator", description: "Wybierz parametry oferty i zobacz cenę w czasie rzeczywistym. Do samodzielnej konfiguracji pakietów.", iconStyle: "bg-emerald-50 text-emerald-600" },
+  { icon: BookOpen, title: "Procedura", description: "Opis procesu z podziałem na kroki, role i terminy. Do sprawdzenia, jak coś zrobić.", iconStyle: "bg-sky-50 text-sky-600" },
+  { icon: Table, title: "Tabela procesowa", description: "Etapy procesu w formie tabeli z filtrami i statusami. Do śledzenia postępu.", iconStyle: "bg-amber-50 text-amber-600" },
+  { icon: GitBranch, title: "Diagram", description: "Schemat wizualny procesu lub przepływu w Figma. Do szybkiego zrozumienia całości.", iconStyle: "bg-violet-50 text-violet-600" },
+  { icon: Wrench, title: "Narzędzie wewnętrzne", description: "Aplikacja do konkretnego zadania — dashboard, generator raportów, eksport danych.", iconStyle: "bg-slate-100 text-slate-600" },
+  { icon: FileText, title: "Strona wiedzy", description: "Zestawienie reguł, wymagań lub wyjaśnień. Do szybkiego odnalezienia odpowiedzi.", iconStyle: "bg-blue-50 text-blue-600" },
 ];
 
 // ─── Ordered keys for filter UI ─────────────────────────

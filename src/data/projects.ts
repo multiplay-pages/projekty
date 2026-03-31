@@ -5,7 +5,7 @@ export const projects: Project[] = [
     id: "1",
     title: "Kalkulator GigaNET",
     description:
-      "Interaktywny kalkulator ofert internetu światłowodowego GigaNET z konfiguracją pakietów, promocji i dodatków.",
+      "Konfiguracja oferty światłowodowej GigaNET — prędkości, pakiety, promocje i dodatki z podglądem ceny na żywo.",
     category: "kalkulatory",
     type: "kalkulator",
     status: "aktywny",
@@ -17,7 +17,7 @@ export const projects: Project[] = [
     id: "2",
     title: "Kalkulator GigaBOX",
     description:
-      "Kalkulator zestawów konwergentnych GigaBOX — internet, TV, telefon. Podgląd cen, rabatów i składu pakietu.",
+      "Składanie zestawów konwergentnych GigaBOX — internet, TV i telefon. Wybór wariantów, rabatów i cen końcowych.",
     category: "kalkulatory",
     type: "kalkulator",
     status: "aktywny",
@@ -29,7 +29,7 @@ export const projects: Project[] = [
     id: "3",
     title: "Komunikaty MNP",
     description:
-      "Strona z wyjaśnieniem komunikatów procesu przenoszenia numeru (MNP) — statusy, kody błędów, kolejne kroki.",
+      "Objaśnienie komunikatów procesu przenoszenia numeru — co oznaczają poszczególne statusy i kody, co robić dalej.",
     category: "procedury",
     type: "strona",
     status: "aktywny",
@@ -39,9 +39,9 @@ export const projects: Project[] = [
   },
   {
     id: "4",
-    title: "Procedura potwierdzania wypowiedzenia",
+    title: "Potwierdzanie wypowiedzenia umowy",
     description:
-      "Opis procesu przyjmowania i potwierdzania wypowiedzeń umów — role, statusy, terminy i wymagania formalne.",
+      "Jak przyjąć i potwierdzić wypowiedzenie — kto odpowiada, jakie są terminy, co jest wymagane formalnie.",
     category: "procedury",
     type: "strona",
     status: "aktywny",
@@ -51,9 +51,9 @@ export const projects: Project[] = [
   },
   {
     id: "5",
-    title: "Interaktywna tabela procesu B2B",
+    title: "Etapy sprzedaży B2B",
     description:
-      "Tabela z etapami procesu sprzedaży B2B — statusy, odpowiedzialności, wymagane dokumenty i terminy SLA.",
+      "Tabela z krokami procesu sprzedaży B2B — kto odpowiada na każdym etapie, jakie dokumenty są potrzebne, ile trwa SLA.",
     category: "tabele",
     type: "tabela",
     status: "aktywny",
@@ -63,9 +63,9 @@ export const projects: Project[] = [
   },
   {
     id: "6",
-    title: "Schemat procesu aktywacji w Figma",
+    title: "Schemat aktywacji usług",
     description:
-      "Wizualny diagram procesu aktywacji usług — od złożenia zamówienia do uruchomienia usługi u klienta.",
+      "Diagram procesu od złożenia zamówienia do uruchomienia usługi u klienta — kroki, role i punkty decyzyjne.",
     category: "schematy",
     type: "figma",
     status: "aktywny",
@@ -77,7 +77,7 @@ export const projects: Project[] = [
     id: "7",
     title: "Dashboard operacyjny",
     description:
-      "Panel z kluczowymi wskaźnikami operacyjnymi zespołu — statusy zgłoszeń, obciążenie, alerty i priorytety.",
+      "Panel do śledzenia bieżących zgłoszeń, obciążenia zespołu i priorytetów — w jednym widoku.",
     category: "narzedzia",
     type: "aplikacja",
     status: "w-budowie",
@@ -89,7 +89,7 @@ export const projects: Project[] = [
     id: "8",
     title: "Kalkulator rabatów B2B",
     description:
-      "Narzędzie do kalkulacji indywidualnych rabatów dla klientów biznesowych na podstawie wolumenu i okresu umowy.",
+      "Wyliczanie indywidualnych rabatów dla klientów biznesowych — na podstawie wolumenu, okresu umowy i historii.",
     category: "kalkulatory",
     type: "kalkulator",
     status: "w-budowie",
@@ -99,9 +99,9 @@ export const projects: Project[] = [
   },
   {
     id: "9",
-    title: "Procedura obsługi reklamacji",
+    title: "Obsługa reklamacji",
     description:
-      "Kompletna procedura przyjmowania, klasyfikacji i rozpatrywania reklamacji — ścieżki, terminy, eskalacje.",
+      "Procedura od przyjęcia reklamacji do rozpatrzenia — klasyfikacja, terminy odpowiedzi, ścieżki eskalacji.",
     category: "procedury",
     type: "strona",
     status: "planowany",
@@ -113,7 +113,7 @@ export const projects: Project[] = [
     id: "10",
     title: "Schemat retencji klienta",
     description:
-      "Diagram procesu retencyjnego — od sygnału churnu po ofertę win-back i raportowanie skuteczności.",
+      "Diagram procesu retencyjnego — od wykrycia ryzyka odejścia po ofertę zatrzymania i raport skuteczności.",
     category: "schematy",
     type: "figma",
     status: "planowany",
@@ -123,9 +123,9 @@ export const projects: Project[] = [
   },
   {
     id: "11",
-    title: "Tabela statusów zamówień",
+    title: "Statusy zamówień",
     description:
-      "Interaktywna tabela statusów zamówień — od przyjęcia do realizacji, z filtrami i kodami kolorowymi.",
+      "Tabela z bieżącymi statusami zamówień — od przyjęcia do realizacji, z filtrami i oznaczeniami kolorowymi.",
     category: "tabele",
     type: "tabela",
     status: "w-budowie",
@@ -135,9 +135,9 @@ export const projects: Project[] = [
   },
   {
     id: "12",
-    title: "Narzędzie do generowania raportów",
+    title: "Generator raportów",
     description:
-      "Wewnętrzne narzędzie do generowania raportów operacyjnych z konfigurowalnymi parametrami i eksportem CSV/PDF.",
+      "Narzędzie do tworzenia raportów operacyjnych z wyborem parametrów, zakresu dat i eksportem do CSV lub PDF.",
     category: "narzedzia",
     type: "aplikacja",
     status: "planowany",
