@@ -1,4 +1,6 @@
 import type { Project } from "./project-config";
+import giganetPreview from "@/assets/giganet-preview.png";
+import gigaboxPreview from "@/assets/gigabox-preview.png";
 
 export const projects: Project[] = [
   {
@@ -12,6 +14,7 @@ export const projects: Project[] = [
     tags: ["internet", "oferta", "kalkulator", "giganet"],
     url: "https://multiplay-pages.github.io/giganet_kalkulator/",
     featured: true,
+    preview: giganetPreview,
   },
   {
     id: "2",
@@ -24,6 +27,7 @@ export const projects: Project[] = [
     tags: ["internet", "tv", "telefon", "kalkulator", "gigabox"],
     url: "https://multiplay-pages.github.io/gigabox_kalkulator/",
     featured: true,
+    preview: gigaboxPreview,
   },
   {
     id: "3",

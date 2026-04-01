@@ -56,6 +56,7 @@ function ProjectTags({ tags, limit = 3 }: { tags: string[]; limit?: number }) {
 
 export function FeaturedProjectCard({ project }: { project: Project }) {
   const CtaIcon = ctaIconMap[project.type];
+  const hasPreview = !!project.preview;
 
   return (
     <a
@@ -88,6 +89,27 @@ export function FeaturedProjectCard({ project }: { project: Project }) {
         <p className="mb-5 text-[14px] leading-[1.65] text-muted-foreground line-clamp-2">
           {project.description}
         </p>
+
+        {/* Preview image */}
+        {hasPreview && (
+          <div className="mb-5 overflow-hidden rounded-xl border border-border/50 bg-muted/30">
+            <div className="relative aspect-[16/9] overflow-hidden">
+              <img
+                src={project.preview}
+                alt={`Podgląd — ${project.title}`}
+                className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-card/20 to-transparent pointer-events-none" />
+              {/* Hover overlay with Eye icon */}
+              <div className="absolute inset-0 flex items-center justify-center bg-card/0 transition-all duration-300 group-hover:bg-card/10">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-card/80 text-primary opacity-0 shadow-lg backdrop-blur-sm transition-all duration-300 group-hover:opacity-100 group-hover:scale-100 scale-90">
+                  <Eye className="h-4 w-4" />
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* Tags */}
         <div className="mb-6">

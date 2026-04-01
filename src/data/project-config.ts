@@ -21,6 +21,7 @@ export interface Project {
   tags: string[];
   url: string;
   featured: boolean;
+  preview?: string;
 }
 
 // ─── Labels (UI strings) ────────────────────────────────
