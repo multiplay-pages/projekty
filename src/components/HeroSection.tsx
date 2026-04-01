@@ -11,6 +11,8 @@ export function HeroSection() {
     document.getElementById("wyrozniione")?.scrollIntoView({ behavior: "smooth" });
   };
 
+  const currentYear = new Date().getFullYear();
+
   return (
     <section className="relative overflow-hidden bg-gradient-hero">
       {/* Ambient glows */}

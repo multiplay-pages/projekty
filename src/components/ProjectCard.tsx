@@ -61,6 +61,8 @@ export function FeaturedProjectCard({ project }: { project: Project }) {
   return (
     <a
       href={project.url}
+      target="_blank"
+      rel="noopener noreferrer"
       className="group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition-all duration-300 hover:border-primary/20 hover:shadow-[0_16px_48px_-12px_rgba(0,0,0,0.1),0_4px_16px_-4px_rgba(0,0,0,0.06)]"
     >
       {/* Top accent bar */}
@@ -141,6 +143,8 @@ export function ProjectCard({ project }: { project: Project }) {
   return (
     <a
       href={project.url}
+      target="_blank"
+      rel="noopener noreferrer"
       className="group card-elevated flex flex-col p-6"
     >
       <div className="mb-4 flex items-start justify-between gap-3">
