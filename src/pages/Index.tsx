@@ -1,7 +1,6 @@
 import { HeroSection } from "@/components/HeroSection";
 import { FeaturedProjects } from "@/components/FeaturedProjects";
-import { ProjectLibrary } from "@/components/ProjectLibrary";
-import { CategoryOverview } from "@/components/CategoryOverview";
+import { ProjectIndex } from "@/components/ProjectIndex";
 import { HowToUseSection } from "@/components/HowToUseSection";
 import { Footer } from "@/components/Footer";
 
@@ -10,8 +9,7 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <HeroSection />
       <FeaturedProjects />
-      <CategoryOverview />
-      <ProjectLibrary />
+      <ProjectIndex />
       <HowToUseSection />
       <Footer />
     </div>
