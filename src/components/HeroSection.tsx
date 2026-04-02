@@ -54,8 +54,8 @@ export function HeroSection() {
 
           {/* Subheadline */}
           <p className="mx-auto mb-10 max-w-lg text-[16px] leading-[1.7] text-muted-foreground sm:text-[17px]">
-            Kalkulatory ofert, procedury i&nbsp;strony pomocnicze
-            zespołu Multiplay — w&nbsp;jednym miejscu.
+            Kalkulatory ofert, procedury i&nbsp;strony pomocnicze zespołu
+            Multiplay — zebrane w&nbsp;jednym miejscu.
           </p>
 
           {/* CTAs */}
