@@ -1,4 +1,4 @@
-import { ArrowDown, Calculator, FileText, Wrench, LayoutGrid } from "lucide-react";
+import { ArrowDown, Calculator, FileText, LayoutGrid } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import multiplayLogo from "@/assets/multiplay-logo.png";
 
