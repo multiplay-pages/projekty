@@ -4,8 +4,8 @@ import multiplayLogo from "@/assets/multiplay-logo.png";
 
 const quickLinks = [
   { label: "Główne narzędzia", anchor: "wyrozniione", icon: LayoutGrid },
-  { label: "Wszystkie zasoby", anchor: "wszystkie-zasoby", icon: Calculator },
-  { label: "Jak korzystać", anchor: "jak-korzystac", icon: FileText },
+  { label: "Indeks zasobów", anchor: "wszystkie-zasoby", icon: Calculator },
+  { label: "Typy zasobów", anchor: "jak-korzystac", icon: FileText },
 ];
 
 export function HeroSection() {
