@@ -3,7 +3,7 @@ import { SectionHeader } from "./SectionHeader";
 
 export function HowToUseSection() {
   return (
-    <section className="py-20 lg:py-24">
+    <section id="jak-korzystac" className="py-20 lg:py-24">
       <div className="container mx-auto px-5 sm:px-8 lg:px-10">
         <div className="mb-12">
           <SectionHeader

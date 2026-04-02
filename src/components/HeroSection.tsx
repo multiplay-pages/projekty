@@ -1,17 +1,17 @@
-import { ArrowDown } from "lucide-react";
+import { ArrowDown, Calculator, FileText, LayoutGrid } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import multiplayLogo from "@/assets/multiplay-logo.png";
 
+const quickLinks = [
+  { label: "Główne narzędzia", anchor: "wyrozniione", icon: LayoutGrid },
+  { label: "Wszystkie zasoby", anchor: "wszystkie-zasoby", icon: Calculator },
+  { label: "Jak korzystać", anchor: "jak-korzystac", icon: FileText },
+];
+
 export function HeroSection() {
-  const scrollToProjects = () => {
-    document.getElementById("projekty")?.scrollIntoView({ behavior: "smooth" });
+  const scrollTo = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
-
-  const scrollToFeatured = () => {
-    document.getElementById("wyrozniione")?.scrollIntoView({ behavior: "smooth" });
-  };
-
-  const currentYear = new Date().getFullYear();
 
   return (
     <section className="relative overflow-hidden bg-gradient-hero">
@@ -34,7 +34,7 @@ export function HeroSection() {
         />
       </div>
 
-      <div className="container relative z-10 mx-auto px-5 pb-20 pt-24 sm:px-8 lg:px-10 lg:pb-28 lg:pt-36">
+      <div className="container relative z-10 mx-auto px-5 pb-16 pt-24 sm:px-8 lg:px-10 lg:pb-20 lg:pt-36">
         <div className="mx-auto max-w-[44rem] text-center">
           {/* Multiplay logo */}
           <div className="mb-8 flex justify-center">
@@ -63,7 +63,7 @@ export function HeroSection() {
             <Button
               variant="hero"
               size="lg"
-              onClick={scrollToProjects}
+              onClick={() => scrollTo("wyrozniione")}
               className="h-[52px] rounded-xl px-9 text-[15px] font-semibold"
             >
               Przejdź do zasobów
@@ -72,11 +72,27 @@ export function HeroSection() {
             <Button
               variant="hero-outline"
               size="lg"
-              onClick={scrollToFeatured}
+              onClick={() => scrollTo("wszystkie-zasoby")}
               className="h-[52px] rounded-xl px-9 text-[15px] font-semibold"
             >
-              Najważniejsze narzędzia
+              Wszystkie zasoby
             </Button>
+          </div>
+        </div>
+
+        {/* Quick-nav strip */}
+        <div className="mx-auto mt-12 max-w-2xl">
+          <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3">
+            {quickLinks.map(({ label, anchor, icon: Icon }) => (
+              <button
+                key={anchor}
+                onClick={() => scrollTo(anchor)}
+                className="group inline-flex items-center gap-2 rounded-full border border-border bg-card/70 px-4 py-2 text-[13px] font-medium text-muted-foreground backdrop-blur-sm transition-all hover:border-primary/30 hover:bg-primary-light hover:text-foreground sm:text-[13.5px]"
+              >
+                <Icon className="h-3.5 w-3.5 text-primary/60 transition-colors group-hover:text-primary" />
+                {label}
+              </button>
+            ))}
           </div>
         </div>
       </div>

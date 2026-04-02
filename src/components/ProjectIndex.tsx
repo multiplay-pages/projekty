@@ -34,7 +34,7 @@ export function ProjectIndex() {
   );
 
   return (
-    <section id="projekty" className="py-20 lg:py-24 bg-muted/30">
+    <section id="wszystkie-zasoby" className="py-20 lg:py-24 bg-muted/30">
       <div className="container mx-auto px-5 sm:px-8 lg:px-10">
         <div className="mb-8">
           <SectionHeader
