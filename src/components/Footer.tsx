@@ -10,10 +10,10 @@ export function Footer() {
           </div>
           <div className="flex flex-col items-center gap-1 sm:items-end">
             <p className="text-[13px] text-muted-foreground">
-              © {new Date().getFullYear()} Multiplay — Centrum narzędzi i zasobów operacyjnych.
+              © {new Date().getFullYear()} Multiplay — Narzędzia i&nbsp;zasoby operacyjne zespołu.
             </p>
             <p className="text-[11px] text-muted-foreground/60">
-              Strona przeznaczona do użytku wewnętrznego zespołu.
+              Do użytku wewnętrznego.
             </p>
           </div>
         </div>

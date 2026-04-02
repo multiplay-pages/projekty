@@ -4,8 +4,8 @@ import multiplayLogo from "@/assets/multiplay-logo.png";
 
 const quickLinks = [
   { label: "Główne narzędzia", anchor: "wyrozniione", icon: LayoutGrid },
-  { label: "Wszystkie zasoby", anchor: "wszystkie-zasoby", icon: Calculator },
-  { label: "Jak korzystać", anchor: "jak-korzystac", icon: FileText },
+  { label: "Indeks zasobów", anchor: "wszystkie-zasoby", icon: Calculator },
+  { label: "Typy zasobów", anchor: "jak-korzystac", icon: FileText },
 ];
 
 export function HeroSection() {
@@ -54,8 +54,8 @@ export function HeroSection() {
 
           {/* Subheadline */}
           <p className="mx-auto mb-10 max-w-lg text-[16px] leading-[1.7] text-muted-foreground sm:text-[17px]">
-            Kalkulatory ofert, procedury i&nbsp;strony pomocnicze
-            zespołu Multiplay — w&nbsp;jednym miejscu.
+            Kalkulatory ofert, procedury i&nbsp;strony pomocnicze zespołu
+            Multiplay — zebrane w&nbsp;jednym miejscu.
           </p>
 
           {/* CTAs */}
@@ -66,7 +66,7 @@ export function HeroSection() {
               onClick={() => scrollTo("wyrozniione")}
               className="h-[52px] rounded-xl px-9 text-[15px] font-semibold"
             >
-              Przejdź do zasobów
+              Zobacz narzędzia
               <ArrowDown className="ml-2 h-4 w-4" />
             </Button>
             <Button
@@ -75,7 +75,7 @@ export function HeroSection() {
               onClick={() => scrollTo("wszystkie-zasoby")}
               className="h-[52px] rounded-xl px-9 text-[15px] font-semibold"
             >
-              Wszystkie zasoby
+              Szukaj w indeksie
             </Button>
           </div>
         </div>
