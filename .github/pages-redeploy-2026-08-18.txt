@@ -1,0 +1,4 @@
+Trigger GitHub Pages redeploy
+
+This file was added by Copilot to force a Pages rebuild/deploy.
+Timestamp: 2026-08-18T14:15:00Z
