@@ -1,6 +1,7 @@
 import type { Project } from "./project-config";
 import giganetPreview from "@/assets/giganet-preview.png";
 import gigaboxPreview from "@/assets/gigabox-preview.png";
+import biznesPreview from "@/assets/biznes-preview.png";
 
 export const projects: Project[] = [
   {
@@ -31,15 +32,16 @@ export const projects: Project[] = [
   },
   {
     id: "3",
-    title: "Projektowana oferta dla małego biznesu",
+    title: "Kalkulator Oferty Biznes 3.1",
     description:
-      "Projektowana strona ofertowa dla segmentu małego biznesu, rozwijana jako baza do dalszych iteracji.",
+      "Kalkulator oferty Biznes 3.1 do konfiguracji oferty dla małego biznesu z pełną wyceną w cenach NETTO.",
     category: "kalkulatory",
-    type: "strona",
+    type: "kalkulator",
     status: "w-budowie",
-    tags: ["biznes", "msp", "oferta", "sprzedaż"],
+    tags: ["biznes", "msp", "oferta", "kalkulator"],
     url: "https://multiplay-pages.github.io/malybiznes/",
     featured: true,
+    preview: biznesPreview,
   },
   {
     id: "4",
