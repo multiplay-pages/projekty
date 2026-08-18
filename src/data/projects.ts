@@ -37,7 +37,7 @@ export const projects: Project[] = [
       "Kalkulator oferty Biznes 3.1 do konfiguracji oferty dla małego biznesu z pełną wyceną w cenach NETTO.",
     category: "kalkulatory",
     type: "kalkulator",
-    status: "w-budowie",
+    status: "aktywny",
     tags: ["biznes", "msp", "oferta", "kalkulator"],
     url: "https://multiplay-pages.github.io/malybiznes/",
     featured: true,
