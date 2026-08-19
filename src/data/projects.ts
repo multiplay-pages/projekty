@@ -2,6 +2,8 @@ import type { Project } from "./project-config";
 import giganetPreview from "@/assets/giganet-preview.png";
 import gigaboxPreview from "@/assets/gigabox-preview.png";
 import biznesPreview from "@/assets/biznes-preview.png";
+import komunikatyWypowiedzeniaPreview from "@/assets/komunikaty-wypowiedzenia-preview.png";
+import reklamacjePreview from "@/assets/reklamacje-preview.png";
 
 export const projects: Project[] = [
   {
@@ -54,5 +56,19 @@ export const projects: Project[] = [
     tags: ["procedura", "wypowiedzenie", "komunikaty", "obsługa"],
     url: "https://multiplay-pages.github.io/komunikaty-wypowiedzenia/",
     featured: true,
+    preview: komunikatyWypowiedzeniaPreview,
+  },
+  {
+    id: "5",
+    title: "Interaktywny proces obsługi zgłoszeń i reklamacji",
+    description:
+      "Interaktywna tabela procesu obsługi zgłoszeń i reklamacji dla SCC, BOK i Działu Reklamacji, zawierająca ścieżki postępowania, role, terminy i gotowe szablony komunikacji.",
+    category: "procedury",
+    type: "strona",
+    status: "aktywny",
+    tags: ["reklamacje", "procedura", "bok", "scc", "szablony"],
+    url: "https://multiplay-pages.github.io/reklamacje/",
+    featured: true,
+    preview: reklamacjePreview,
   },
 ];
